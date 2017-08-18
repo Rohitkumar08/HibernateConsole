@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+ 
+ <hibernate-mapping>
+	<class name = "beans.Employee" table="Employee11">
+	<id name="id">
+	<generator class="increment"/></id>
+	<!-- <discriminator column="user_type"/> -->
+	
+	<property name="firstName" not-null="true"/>
+	<property name="lastName" not-null="true"/>
+	
+	
+	 <one-to-one name="seeker" class="beans.Seeker" constrained="true" cascade="all"></one-to-one>
+	
+<!-- 	<many-to-one name="seeker" class="beans.Seeker" unique="true"></many-to-one>
+	 -->
+	
+	
+<!-- for working in the same table	
+		
+	<subclass name="beans.Seeker"  discriminator-value="Seeker">
+		
+		<property name="no_of_child"/>
+		<proerty name="spouse_name"/>
+		
+	</subclass>
+	
+	<subclass name="beans.Sitter"  discriminator-value="Sitter">
+		
+		<property name="payPerHour"/>
+		<proerty name="noOfExp"/>
+		
+	</subclass> -->
+
+	<!-- -for working in deff table for diff object -->
+	
+	<!-- 
+	<joined-subclass name="beans.Seeker" table="seeker">
+	<key column="seeker_id"></key>
+		<property name="noOfChild" column="no_of_child"/>
+		<property name="spouseName" column="spouse_name"/>
+	</joined-subclass>
+	
+	<joined-subclass name="beans.Sitter" table="sitter">
+	<key column="sitter_id"></key>
+		<property name="payPerHour"/>
+		<property name="noOfExp"/>
+	</joined-subclass>
+	 -->
+	</class> 
+ 
+ </hibernate-mapping>

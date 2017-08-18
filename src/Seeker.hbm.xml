@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+ 
+ <hibernate-mapping>
+	<class name = "beans.Seeker" table="seeker">
+		
+	<!-- <discriminator column="user_type"/> -->
+	<id name="seekerId" column="seeker_id">
+		<generator class="foreign">
+		<param name="property">emp</param>
+		</generator>
+	</id>
+	<!-- <one-to-one name="emp" ></one-to-one> -->
+	<property name="noOfChild" column="no_of_child"/>
+	<property name="spouseName" column="spouse_name"/>
+		
+	</class>
+</hibernate-mapping>
